@@ -417,9 +417,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </ul>
     </div>
 
-    <form id="sample-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST">
-      <input type="hidden" name="_subject" value="New QuizBook sample request">
-      <input type="hidden" name="_next" value="https://quizbook.org/thanks.html">
+    <form id="sample-form" method="POST" novalidate>
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <div class="field">
         <label for="name">Name</label>
@@ -512,12 +510,55 @@ QUESTIONS.forEach((item, i) => {
 });
 show(0);
 
-document.getElementById('sample-form').addEventListener('submit', function(e){
-  const note = document.getElementById('formnote');
-  if (this.action.includes('REPLACE_WITH_YOUR_FORM_ID')) {
-    e.preventDefault();
-    note.textContent = 'Form endpoint not connected yet — add your Formspree ID to go live.';
-    note.dataset.show = 'true';
+// Set this to the Cloud Function URL printed by backend/deploy.sh.
+const FORM_ENDPOINT = 'REPLACE_WITH_FUNCTION_URL';
+
+const form = document.getElementById('sample-form');
+const note = document.getElementById('formnote');
+const submit = form.querySelector('button[type=submit]');
+
+function say(message, ok) {
+  note.textContent = message;
+  note.dataset.show = 'true';
+  note.style.background = ok ? '' : 'var(--honey-soft)';
+  note.style.color = ok ? '' : 'var(--honey)';
+}
+
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  if (FORM_ENDPOINT.startsWith('REPLACE_')) {
+    say('Download endpoint not connected yet.', false);
+    return;
+  }
+
+  const data = Object.fromEntries(new FormData(form).entries());
+  submit.disabled = true;
+  const original = submit.textContent;
+  submit.textContent = 'Sending…';
+
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const body = await res.json().catch(() => ({}));
+
+    if (res.ok && body.ok) {
+      window.location.href = '/thanks.html';
+      return;
+    }
+    const messages = {
+      invalid_email: 'That email address does not look right — check it and try again.',
+      disposable_email: 'Please use an address you actually read; the sample is emailed to you.',
+      send_failed: 'We could not send the email just now. Try again in a minute.'
+    };
+    say(messages[body.error] || 'Something went wrong. Try again in a minute.', false);
+  } catch (err) {
+    say('Could not reach the server. Check your connection and try again.', false);
+  } finally {
+    submit.disabled = false;
+    submit.textContent = original;
   }
 });
 </script>

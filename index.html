@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QuizBook — Question books for Bee competitors</title>
+<meta name="description" content="Question books for Geography, History and Science Bee competitors. 150 curated questions per title, written for kids aged 9–14.">
+<style>
+:root{
+  --paper:#FBF9F4;
+  --raised:#FFFFFF;
+  --ink:#16212B;
+  --ink-soft:#5C6670;
+  --rule:#E3DDD1;
+  --teal:#0E6E6B;
+  --teal-soft:#E2EFEE;
+  --honey:#C97F0A;
+  --honey-soft:#FBEFD8;
+  --shadow:14 33 43;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#12191F;
+    --raised:#1B242C;
+    --ink:#EDE9E1;
+    --ink-soft:#9BA5AE;
+    --rule:#2E3A44;
+    --teal:#5FBDB6;
+    --teal-soft:#173230;
+    --honey:#E8A93F;
+    --honey-soft:#33280F;
+    --shadow:0 0 0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#12191F;
+  --raised:#1B242C;
+  --ink:#EDE9E1;
+  --ink-soft:#9BA5AE;
+  --rule:#2E3A44;
+  --teal:#5FBDB6;
+  --teal-soft:#173230;
+  --honey:#E8A93F;
+  --honey-soft:#33280F;
+  --shadow:0 0 0;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:2px}
+
+.label{
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;color:var(--ink-soft);
+}
+
+/* ---- masthead ---- */
+.masthead{
+  border-bottom:1px solid var(--rule);
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(8px);
+}
+.masthead .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px}
+.brand{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:19px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.brand b{color:var(--teal)}
+.brand .dot{width:7px;height:7px;border-radius:50%;background:var(--honey);align-self:center}
+.masthead nav{display:flex;gap:26px}
+.masthead nav a{color:var(--ink-soft);text-decoration:none;font-size:14.5px;font-weight:600}
+.masthead nav a:hover{color:var(--ink)}
+@media(max-width:720px){.masthead nav{display:none}}
+
+/* ---- hero ---- */
+.hero{padding:72px 0 64px;border-bottom:1px solid var(--rule)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+@media(max-width:860px){
+  .hero{padding:48px 0 44px}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+}
+.hero h1{
+  font-size:clamp(34px,5.2vw,52px);line-height:1.06;letter-spacing:-.035em;
+  font-weight:800;margin:16px 0 20px;text-wrap:balance;
+}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero .lede{font-size:18px;color:var(--ink-soft);max-width:46ch;margin:0 0 30px}
+
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-block;padding:13px 22px;border-radius:6px;font-weight:700;font-size:15px;
+  text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:inherit;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.btn-primary{background:var(--teal);color:var(--paper);border-color:var(--teal)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgb(var(--shadow)/.22)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn-ghost:hover{border-color:var(--ink-soft)}
+@media(prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+/* ---- the question card: the hero object ---- */
+.card{
+  background:var(--raised);
+  border:1px solid var(--rule);
+  border-radius:10px;
+  box-shadow:0 1px 0 var(--rule),0 18px 40px -22px rgb(var(--shadow)/.35);
+  padding:26px 26px 22px;
+  position:relative;
+}
+.card::before{
+  content:"";position:absolute;inset:-9px -9px auto auto;width:100%;height:100%;
+  border:1px solid var(--rule);border-radius:10px;z-index:-1;opacity:.55;
+}
+.card .cardtop{display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:12px;margin-bottom:16px;border-bottom:2px solid var(--teal)}
+.card .qnum{font-variant-numeric:tabular-nums;font-weight:800;color:var(--teal);font-size:14px}
+.card .q{font-size:19px;font-weight:650;line-height:1.42;margin:0 0 18px;text-wrap:pretty}
+.card .a{
+  background:var(--teal-soft);border-radius:6px;padding:12px 14px;
+  font-size:15px;color:var(--ink);
+}
+.card .a strong{color:var(--teal);letter-spacing:.04em;font-size:12px;
+  text-transform:uppercase;display:block;margin-bottom:3px}
+.deck{display:flex;gap:6px;margin-top:18px;justify-content:center}
+.deck button{
+  width:26px;height:4px;border-radius:2px;border:0;padding:0;cursor:pointer;
+  background:var(--rule);transition:background .2s;
+}
+.deck button[aria-current="true"]{background:var(--honey)}
+
+/* ---- strip of facts ---- */
+.strip{border-bottom:1px solid var(--rule);background:var(--raised)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;padding:0}
+@media(max-width:720px){.strip .wrap{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:26px 24px;border-left:1px solid var(--rule)}
+.stat:first-child{border-left:0}
+@media(max-width:720px){.stat:nth-child(3){border-left:0}}
+.stat .n{font-size:27px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat .t{font-size:13.5px;color:var(--ink-soft);margin-top:2px}
+
+/* ---- generic section ---- */
+section.band{padding:72px 0;border-bottom:1px solid var(--rule)}
+section.band h2{font-size:clamp(25px,3.4vw,33px);letter-spacing:-.03em;font-weight:800;margin:10px 0 12px;text-wrap:balance}
+section.band .intro{color:var(--ink-soft);max-width:56ch;margin:0 0 36px;font-size:17px}
+
+/* ---- subject table ---- */
+.subjects{border-top:1px solid var(--rule)}
+.subject{
+  display:grid;grid-template-columns:auto 1fr auto auto;gap:20px;align-items:center;
+  padding:20px 4px;border-bottom:1px solid var(--rule);
+}
+@media(max-width:720px){
+  .subject{grid-template-columns:auto 1fr;gap:6px 16px}
+  .subject .count,.subject .state{grid-column:2}
+}
+.subject .glyph{
+  width:40px;height:40px;border-radius:7px;background:var(--honey-soft);
+  display:grid;place-items:center;font-weight:800;color:var(--honey);font-size:15px;
+}
+.subject .nm{font-weight:700;font-size:17px}
+.subject .ds{color:var(--ink-soft);font-size:14.5px;margin-top:1px}
+.subject .count{font-variant-numeric:tabular-nums;color:var(--ink-soft);font-size:14px;white-space:nowrap}
+.subject .state{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 10px;border-radius:20px;white-space:nowrap}
+.state.live{background:var(--teal-soft);color:var(--teal)}
+.state.soon{background:transparent;color:var(--ink-soft);border:1px solid var(--rule)}
+
+/* ---- sample form ---- */
+.sample .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+@media(max-width:860px){.sample .wrap{grid-template-columns:1fr;gap:36px}}
+.checklist{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px}
+.checklist li{display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:start;font-size:15.5px}
+.checklist .tick{color:var(--teal);font-weight:800}
+form{background:var(--raised);border:1px solid var(--rule);border-radius:10px;padding:26px}
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label{font-size:13.5px;font-weight:700}
+.field input{
+  font:inherit;font-size:15px;padding:11px 13px;border-radius:6px;
+  border:1.5px solid var(--rule);background:var(--paper);color:var(--ink);
+}
+.field input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+form .btn{width:100%;text-align:center}
+.fineprint{font-size:12.5px;color:var(--ink-soft);margin:12px 0 0;text-align:center}
+.formnote{
+  margin-top:14px;padding:11px 13px;border-radius:6px;font-size:14px;font-weight:600;
+  background:var(--teal-soft);color:var(--teal);display:none;
+}
+.formnote[data-show="true"]{display:block}
+
+/* ---- contact ---- */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:8px}
+@media(max-width:720px){.contact-grid{grid-template-columns:1fr;gap:20px}}
+.contact-grid h3{font-size:15px;margin:0 0 4px}
+.contact-grid p{margin:0;color:var(--ink-soft);font-size:15px}
+
+footer{padding:34px 0;color:var(--ink-soft);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="dot"></span>Quiz<b>Book</b></a>
+    <nav>
+      <a href="#subjects">Subjects</a>
+      <a href="#sample">Free sample</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="label">Geography · History · Science</p>
+      <h1>Question books built for <em>Bee competitors</em>.</h1>
+      <p class="lede">Every title is 150 questions, hand-checked and organised by topic, written for students aged 9–14 preparing for school and national Bee rounds.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#sample">Get the free sample</a>
+        <a class="btn btn-ghost" href="#subjects">See the subjects</a>
+      </div>
+    </div>
+
+    <div>
+      <p class="label" style="margin-bottom:12px">A question from the sample</p>
+      <div class="card">
+        <div class="cardtop">
+          <span class="qnum" id="q-num">Q 014</span>
+          <span class="label" id="q-topic">Physical geography</span>
+        </div>
+        <p class="q" id="q-text">Which river flows through the Grand Canyon, carving it over roughly six million years?</p>
+        <div class="a">
+          <strong>Answer</strong>
+          <span id="q-ans">The Colorado River</span>
+        </div>
+        <div class="deck" id="deck"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="stat"><div class="n">150</div><div class="t">Questions per title</div></div>
+    <div class="stat"><div class="n">3</div><div class="t">Subjects at launch</div></div>
+    <div class="stat"><div class="n">9–14</div><div class="t">Target age range</div></div>
+    <div class="stat"><div class="n">PDF</div><div class="t">Plus EPUB on request</div></div>
+  </div>
+</div>
+
+<section class="band" id="subjects">
+  <div class="wrap">
+    <p class="label">Catalogue</p>
+    <h2>One book per subject, no filler</h2>
+    <p class="intro">Each book covers a single subject end to end. Buy the one you need rather than a bundle padded with material you'll never open.</p>
+
+    <div class="subjects">
+      <div class="subject">
+        <div class="glyph">GE</div>
+        <div>
+          <div class="nm">Geography Bee</div>
+          <div class="ds">Capitals, physical features, borders, climate zones, flags</div>
+        </div>
+        <div class="count">150 questions</div>
+        <div class="state live">Sample ready</div>
+      </div>
+      <div class="subject">
+        <div class="glyph">HI</div>
+        <div>
+          <div class="nm">History Bee</div>
+          <div class="ds">World events, dates, treaties, leaders, movements</div>
+        </div>
+        <div class="count">150 questions</div>
+        <div class="state soon">In progress</div>
+      </div>
+      <div class="subject">
+        <div class="glyph">SC</div>
+        <div>
+          <div class="nm">Science Bee</div>
+          <div class="ds">Biology, chemistry, physics, earth and space science</div>
+        </div>
+        <div class="count">150 questions</div>
+        <div class="state soon">In progress</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band sample" id="sample">
+  <div class="wrap">
+    <div>
+      <p class="label">Free download</p>
+      <h2>Try 150 geography questions, free</h2>
+      <p class="intro" style="margin-bottom:0">Leave your email and we'll send the full Geography Bee sample straight to your inbox. No account, no card.</p>
+      <ul class="checklist">
+        <li><span class="tick">✓</span><span>All 150 questions with answers, grouped by topic</span></li>
+        <li><span class="tick">✓</span><span>Printable PDF that works on tablet, phone or paper</span></li>
+        <li><span class="tick">✓</span><span>A note when each new subject is published</span></li>
+      </ul>
+    </div>
+
+    <form id="sample-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required autocomplete="name" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label for="role">I'm a…</label>
+        <input id="role" name="role" type="text" autocomplete="off" placeholder="Parent, teacher, student — optional">
+      </div>
+      <button class="btn btn-primary" type="submit">Send me the sample</button>
+      <p class="fineprint">One email with the download. We never sell your address.</p>
+      <p class="formnote" id="formnote"></p>
+    </form>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="wrap">
+    <p class="label">Contact</p>
+    <h2>Questions, bulk orders, corrections</h2>
+    <div class="contact-grid">
+      <div>
+        <h3>Email</h3>
+        <p><a href="mailto:hello@quizbook.org">hello@quizbook.org</a></p>
+      </div>
+      <div>
+        <h3>Schools and clubs</h3>
+        <p>Bulk pricing available — ask about class sets.</p>
+      </div>
+      <div>
+        <h3>Spotted an error?</h3>
+        <p>Tell us and we'll fix it in the next revision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> QuizBook</span>
+    <span>Made for curious kids.</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const QUESTIONS = [
+  {n:'Q 014', topic:'Physical geography',
+   q:'Which river flows through the Grand Canyon, carving it over roughly six million years?',
+   a:'The Colorado River'},
+  {n:'Q 037', topic:'Capitals',
+   q:'Canberra was purpose-built as a capital to settle a rivalry between which two Australian cities?',
+   a:'Sydney and Melbourne'},
+  {n:'Q 072', topic:'Borders',
+   q:'Which is the only country that shares a land border with both Portugal and France?',
+   a:'Spain'},
+  {n:'Q 108', topic:'Climate zones',
+   q:'The Atacama Desert, the driest non-polar desert on Earth, lies mainly in which country?',
+   a:'Chile'}
+];
+
+const els = {
+  n: document.getElementById('q-num'),
+  t: document.getElementById('q-topic'),
+  q: document.getElementById('q-text'),
+  a: document.getElementById('q-ans')
+};
+const deck = document.getElementById('deck');
+
+function show(i){
+  const item = QUESTIONS[i];
+  els.n.textContent = item.n;
+  els.t.textContent = item.topic;
+  els.q.textContent = item.q;
+  els.a.textContent = item.a;
+  [...deck.children].forEach((b, j) => b.setAttribute('aria-current', String(j === i)));
+}
+
+QUESTIONS.forEach((item, i) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.setAttribute('aria-label', 'Show sample question ' + (i + 1));
+  b.addEventListener('click', () => show(i));
+  deck.appendChild(b);
+});
+show(0);
+
+document.getElementById('sample-form').addEventListener('submit', function(e){
+  const note = document.getElementById('formnote');
+  if (this.action.includes('REPLACE_WITH_YOUR_FORM_ID')) {
+    e.preventDefault();
+    note.textContent = 'Form endpoint not connected yet — add your Formspree ID to go live.';
+    note.dataset.show = 'true';
+  }
+});
+</script>
+</body>
+</html>

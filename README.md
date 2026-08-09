@@ -8,6 +8,7 @@ Static HTML, no build step, served by GitHub Pages.
 | Path | What it is |
 |---|---|
 | `index.html` | The whole site |
+| `thanks.html` | Confirmation page shown after a form submission |
 | `CNAME` | Custom domain for GitHub Pages |
 | `_config.yml` | Keeps this README out of the built site |
 
@@ -53,6 +54,12 @@ done. Submitting the page as-is shows an inline notice instead of sending.
 3. Replace both occurrences of `REPLACE_WITH_YOUR_FORM_ID` in `index.html`.
 
 Formspree emails each submission, which is how new signups get noticed.
+
+The form already carries three hidden fields:
+
+- `_subject` — subject line of the notification email
+- `_next` — redirects to `/thanks.html` after a successful submission
+- `_gotcha` — off-screen honeypot; bots that fill it are discarded silently
 
 ### Mail on the domain
 

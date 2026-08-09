@@ -269,7 +269,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <div class="ds">Capitals, physical features, borders, climate zones, flags</div>
         </div>
         <div class="count">150 questions</div>
-        <div class="state live">Sample ready</div>
+        <div class="state live">Sample first</div>
       </div>
       <div class="subject">
         <div class="glyph">HI</div>
@@ -296,9 +296,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="band sample" id="sample">
   <div class="wrap">
     <div>
-      <p class="label">Free download</p>
-      <h2>Try 150 geography questions, free</h2>
-      <p class="intro" style="margin-bottom:0">Leave your email and we'll send the full Geography Bee sample straight to your inbox. No account, no card.</p>
+      <p class="label">Free sample · Coming shortly</p>
+      <h2>Get 150 geography questions, free</h2>
+      <p class="intro" style="margin-bottom:0">The Geography Bee sample is being finalised. Leave your email and it lands in your inbox the day it's published — no account, no card.</p>
       <ul class="checklist">
         <li><span class="tick">✓</span><span>All 150 questions with answers, grouped by topic</span></li>
         <li><span class="tick">✓</span><span>Printable PDF that works on tablet, phone or paper</span></li>
@@ -307,6 +307,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
 
     <form id="sample-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="New QuizBook sample request">
+      <input type="hidden" name="_next" value="https://quizbook.org/thanks.html">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <div class="field">
         <label for="name">Name</label>
         <input id="name" name="name" type="text" required autocomplete="name" placeholder="Your name">
@@ -319,8 +322,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <label for="role">I'm a…</label>
         <input id="role" name="role" type="text" autocomplete="off" placeholder="Parent, teacher, student — optional">
       </div>
-      <button class="btn btn-primary" type="submit">Send me the sample</button>
-      <p class="fineprint">One email with the download. We never sell your address.</p>
+      <button class="btn btn-primary" type="submit">Email me the sample</button>
+      <p class="fineprint">One email the day it's ready. We never sell your address.</p>
       <p class="formnote" id="formnote"></p>
     </form>
   </div>
@@ -333,7 +336,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="contact-grid">
       <div>
         <h3>Email</h3>
-        <p><a href="mailto:hello@quizbook.org">hello@quizbook.org</a></p>
+        <p><a href="mailto:quizbookorg@gmail.com">quizbookorg@gmail.com</a></p>
       </div>
       <div>
         <h3>Schools and clubs</h3>

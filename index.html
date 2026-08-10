@@ -304,7 +304,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <div class="nm">Geography Bee</div>
           <div class="ds">Capitals, physical features, borders, climate zones, flags</div>
         </div>
-        <div class="state live">Sample soon</div>
+        <div class="state live">Sample ready</div>
       </div>
       <div class="subject">
         <div class="glyph">HI</div>
@@ -413,9 +413,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section class="band sample" id="sample">
   <div class="wrap">
     <div>
-      <p class="label">Free sample · Coming shortly</p>
+      <p class="label">Free sample</p>
       <h2>Get 150 geography questions, free</h2>
-      <p class="intro" style="margin-bottom:0">The Geography Bee sample is being finalised. Leave your email and it lands in your inbox the day it's published — no account, no card.</p>
+      <p class="intro" style="margin-bottom:0">Leave your email and the full Geography Bee sample arrives in your inbox within a minute — no account, no card.</p>
       <ul class="checklist">
         <li><span class="tick">✓</span><span>All 150 questions with answers, grouped by topic</span></li>
         <li><span class="tick">✓</span><span>Ebook that works on tablet, phone or paper</span></li>
@@ -438,7 +438,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <input id="role" name="role" type="text" autocomplete="off" placeholder="Parent, teacher, student — optional">
       </div>
       <button class="btn btn-primary" type="submit">Email me the sample</button>
-      <p class="fineprint">One email the day it's ready. We never sell your address.</p>
+      <p class="fineprint">One email with your download link. We never sell your address.</p>
       <p class="formnote" id="formnote"></p>
     </form>
   </div>
@@ -513,7 +513,7 @@ QUESTIONS.forEach((item, i) => {
 show(0);
 
 // Set this to the Cloud Function URL printed by backend/deploy.sh.
-const FORM_ENDPOINT = 'REPLACE_WITH_FUNCTION_URL';
+const FORM_ENDPOINT = 'https://request-sample-mlujordz3a-uc.a.run.app';
 
 const form = document.getElementById('sample-form');
 const note = document.getElementById('formnote');

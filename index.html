@@ -172,9 +172,9 @@ section.band .intro{color:var(--ink-soft);max-width:56ch;margin:0 0 36px;font-si
   .subject{grid-template-columns:auto 1fr;gap:6px 16px}
   .subject .state{grid-column:2}
 }
-.subject .glyph{
-  width:40px;height:40px;border-radius:7px;background:var(--honey-soft);
-  display:grid;place-items:center;font-weight:800;color:var(--honey);font-size:15px;
+.subject .avatar{
+  width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 15%;
+  background:var(--honey-soft);flex:none;
 }
 .subject .nm{font-weight:700;font-size:17px}
 .subject .ds{color:var(--ink-soft);font-size:14.5px;margin-top:1px}
@@ -306,7 +306,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <h2>One book per subject</h2>
     <div class="subjects">
       <div class="subject">
-        <div class="glyph">GE</div>
+        <img class="avatar" src="characters/geography-girl.png" width="56" height="56" alt="">
         <div>
           <div class="nm">Geography Bee</div>
           <div class="ds">Capitals, physical features, borders, climate zones, flags</div>
@@ -315,7 +315,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <a class="state live" href="#sample">Sample ready</a>
       </div>
       <div class="subject">
-        <div class="glyph">HI</div>
+        <img class="avatar" src="characters/history-boy-glasses.png" width="56" height="56" alt="">
         <div>
           <div class="nm">History Bee</div>
           <div class="ds">World events, dates, treaties, leaders, movements</div>
@@ -323,7 +323,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="state soon">In progress</div>
       </div>
       <div class="subject">
-        <div class="glyph">SC</div>
+        <img class="avatar" src="characters/science-boy.png" width="56" height="56" alt="">
         <div>
           <div class="nm">Science Bee</div>
           <div class="ds">Biology, chemistry, physics, earth and space science</div>
@@ -331,7 +331,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="state soon">In progress</div>
       </div>
       <div class="subject">
-        <div class="glyph">QB</div>
+        <img class="avatar" src="characters/quiz-bowl-girl-bun.png" width="56" height="56" alt="">
         <div>
           <div class="nm">Quiz Bowl</div>
           <div class="ds">Full pyramid tossups across the standard academic distribution</div>

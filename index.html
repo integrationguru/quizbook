@@ -184,6 +184,19 @@ section.band .intro{color:var(--ink-soft);max-width:56ch;margin:0 0 36px;font-si
 .peek .cap{font-size:13.5px;color:var(--ink-soft)}
 .peek .cap b{color:var(--ink);font-weight:700;display:block;font-size:14.5px;margin-bottom:1px}
 
+/* ---- why an ebook ---- */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:8px}
+@media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.why-grid{grid-template-columns:1fr}}
+.why-grid h3{font-size:15.5px;margin:0 0 5px}
+.why-grid p{margin:0;color:var(--ink-soft);font-size:14.5px;line-height:1.55}
+.readers{
+  margin-top:34px;padding:14px 18px;border:1px solid var(--rule);
+  border-radius:8px;background:var(--raised);font-size:14.5px;
+  color:var(--ink-soft);
+}
+.readers b{color:var(--ink)}
+
 /* ---- sample form ---- */
 .sample .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 @media(max-width:860px){.sample .wrap{grid-template-columns:1fr;gap:36px}}
@@ -225,6 +238,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <nav>
       <a href="#subjects">Subjects</a>
       <a href="#inside">Look inside</a>
+      <a href="#why">Why ebook</a>
       <a href="#sample">Free sample</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -347,6 +361,33 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
+<section class="band" id="why">
+  <div class="wrap">
+    <p class="label">Why an ebook</p>
+    <h2>Made to be studied, not just read</h2>
+    <div class="why-grid">
+      <div>
+        <h3>Works offline</h3>
+        <p>Download once and drill anywhere — on the bus, at practice, no connection needed.</p>
+      </div>
+      <div>
+        <h3>Tiny file</h3>
+        <p>The whole book is smaller than a single photo, so it fits on any phone or tablet.</p>
+      </div>
+      <div>
+        <h3>Make it yours</h3>
+        <p>Resize the type, switch fonts, read in dark mode — your reader, your rules.</p>
+      </div>
+      <div>
+        <h3>Bookmark and highlight</h3>
+        <p>Mark the questions you missed and come back to drill exactly those.</p>
+      </div>
+    </div>
+    <p class="readers"><b>Recommended readers:</b> Apple Books on iPhone, iPad and Mac
+      &middot; <b>Lithium</b> (free) on Android. Both support the tap-to-reveal answers.</p>
+  </div>
+</section>
+
 <section class="band sample" id="sample">
   <div class="wrap">
     <div>
@@ -401,7 +442,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span>© <span id="yr">2026</span> QuizBook</span>
-    <span class="ver">build 2026-08-10 01:05 UTC</span>
+    <span class="ver">build 2026-08-10 02:10 UTC</span>
   </div>
 </footer>
 

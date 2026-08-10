@@ -7,7 +7,7 @@
 <meta name="description" content="Question books for Geography, History, Science and Quiz Bowl competitors. Pyramid-style tossups written for students aged 9–14.">
 <link rel="canonical" href="https://quizbook.org/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="og-image.png">
+<link rel="apple-touch-icon" href="icon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://quizbook.org/">
 <meta property="og:site_name" content="QuizBook">
@@ -24,7 +24,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"QuizBook",
  "url":"https://quizbook.org/","email":"quizbookorg@gmail.com",
- "logo":"https://quizbook.org/og-image.png",
+ "logo":"https://quizbook.org/icon-180.png",
  "description":"Question books of pyramid-style tossups for Geography, History, Science and Quiz Bowl competitors aged 9-14."}
 </script>
 <style>
@@ -201,8 +201,15 @@ a.state.live:hover{background:var(--teal);color:var(--paper)}
 .peek .cap b{color:var(--ink);font-weight:700;display:block;font-size:14.5px;margin-bottom:1px}
 
 /* ---- why an ebook ---- */
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:8px}
-@media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+.why-layout{display:grid;grid-template-columns:360px 1fr;gap:56px;
+  align-items:center;margin-top:18px}
+.reader{display:block;width:100%;height:auto;border-radius:10px}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 34px}
+@media(max-width:900px){
+  .why-layout{grid-template-columns:1fr;gap:28px;justify-items:center}
+  .reader{max-width:420px}
+  .why-grid{width:100%}
+}
 @media(max-width:560px){.why-grid{grid-template-columns:1fr}}
 .why-grid h3{font-size:15.5px;margin:0 0 5px}
 .why-grid p{margin:0;color:var(--ink-soft);font-size:14.5px;line-height:1.55}
@@ -367,6 +374,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <p class="label">Why an ebook</p>
     <h2>Made to be studied, not just read</h2>
+    <div class="why-layout">
+    <picture>
+      <source srcset="reader.webp" type="image/webp">
+      <img class="reader" src="reader.png" width="900" height="600" loading="lazy"
+           alt="A girl sitting cross-legged, absorbed in a large open book.">
+    </picture>
     <div class="why-grid">
       <div>
         <h3>Works offline</h3>
@@ -384,6 +397,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <h3>Bookmark and highlight</h3>
         <p>Mark the questions you missed and come back to drill exactly those.</p>
       </div>
+    </div>
     </div>
     <p class="readers"><b>Recommended readers:</b> Apple Books on iPhone, iPad and Mac
       &middot; <b>Lithium</b> (free) on Android. Both support the tap-to-reveal answers.</p>
@@ -444,7 +458,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span>© <span id="yr">2026</span> QuizBook</span>
-    <span class="ver">build 2026-08-10 09:30 UTC</span>
+    <span class="ver">build 2026-08-10 14:05 UTC</span>
   </div>
 </footer>
 

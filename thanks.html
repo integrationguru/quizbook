@@ -16,6 +16,7 @@
   --teal:#0E6E6B;
   --teal-soft:#E2EFEE;
   --honey:#C97F0A;
+  --honey-soft:#FBEFD8;
   --shadow:14 33 43;
 }
 @media (prefers-color-scheme:dark){
@@ -28,6 +29,7 @@
     --teal:#5FBDB6;
     --teal-soft:#173230;
     --honey:#E8A93F;
+    --honey-soft:#33280F;
     --shadow:0 0 0;
   }
 }
@@ -40,6 +42,7 @@
   --teal:#5FBDB6;
   --teal-soft:#173230;
   --honey:#E8A93F;
+  --honey-soft:#33280F;
   --shadow:0 0 0;
 }
 
@@ -83,6 +86,11 @@ h1{font-size:clamp(25px,4vw,32px);letter-spacing:-.03em;font-weight:800;
   text-align:left;background:var(--paper);border:1px solid var(--rule);
   border-radius:8px;padding:18px 20px;margin:0 0 28px;
 }
+.notice{
+  text-align:left;background:var(--honey-soft);border:1px solid var(--honey);
+  border-radius:8px;padding:14px 16px;margin:0 0 24px;font-size:15px;
+}
+.notice b{display:block;margin-bottom:2px}
 .next .label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;
   font-weight:700;color:var(--ink-soft);display:block;margin-bottom:10px}
 .next ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:15px}
@@ -113,11 +121,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <p class="lede">Your download link is on its way. It arrives within a minute
         and works for three days.</p>
 
+      <p class="notice"><b>Not in your inbox? Check spam or Promotions.</b>
+        We are a brand-new sender, so filters are cautious at first. Marking the
+        email as “not spam” means the next one arrives properly.</p>
+
       <div class="next">
         <span class="label">What happens next</span>
         <ol>
           <li>Open the email from QuizBook and tap the download button.</li>
-          <li>Nothing yet? Look in spam or Promotions — we are a new sender.</li>
+          <li>The link works for three days; ask again any time for a fresh one.</li>
           <li>After that, a short note only when a new subject is published.</li>
         </ol>
       </div>
@@ -130,7 +142,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span>© <span id="yr">2026</span> QuizBook</span>
-    <span class="ver">build 2026-08-10 00:20 UTC</span>
+    <span class="ver">build 2026-08-10 00:32 UTC</span>
   </div>
 </footer>
 

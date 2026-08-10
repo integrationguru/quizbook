@@ -110,23 +110,14 @@ a{color:var(--teal)}
   border:1px solid var(--rule);
   border-radius:10px;
   box-shadow:0 1px 0 var(--rule),0 18px 40px -22px rgb(var(--shadow)/.35);
-  padding:26px 26px 22px;
+  padding:14px 14px 12px;
   position:relative;
 }
 .card::before{
   content:"";position:absolute;inset:-9px -9px auto auto;width:100%;height:100%;
   border:1px solid var(--rule);border-radius:10px;z-index:-1;opacity:.55;
 }
-.card .cardtop{display:flex;justify-content:space-between;align-items:center;
-  padding-bottom:12px;margin-bottom:16px;border-bottom:2px solid var(--teal)}
-.card .qnum{font-variant-numeric:tabular-nums;font-weight:800;color:var(--teal);font-size:14px}
-.card .q{font-size:15px;font-weight:500;line-height:1.55;margin:0 0 16px;text-wrap:pretty}
-.card .a{
-  background:var(--teal-soft);border-radius:6px;padding:12px 14px;
-  font-size:15px;color:var(--ink);
-}
-.card .a strong{color:var(--teal);letter-spacing:.04em;font-size:12px;
-  text-transform:uppercase;display:block;margin-bottom:3px}
+.card img{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
 .deck{display:flex;gap:6px;margin-top:18px;justify-content:center}
 .deck button{
   width:26px;height:4px;border-radius:2px;border:0;padding:0;cursor:pointer;
@@ -260,15 +251,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div>
       <p class="label" style="margin-bottom:12px">A question from the sample</p>
       <div class="card">
-        <div class="cardtop">
-          <span class="qnum" id="q-num">Q 014</span>
-          <span class="label" id="q-topic">Physical geography</span>
-        </div>
-        <p class="q" id="q-text">Which river flows through the Grand Canyon, carving it over roughly six million years?</p>
-        <div class="a">
-          <strong>Answer</strong>
-          <span id="q-ans">The Colorado River</span>
-        </div>
+        <img id="sampleshot" src="sample-q095.png" width="1208" height="600"
+             alt="Question #095 from the sample: clue tags and a pyramid tossup whose answer is the Sargasso Sea.">
         <div class="deck" id="deck"></div>
       </div>
     </div>
@@ -280,7 +264,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="stat"><div class="n">5</div><div class="t">Subjects</div></div>
     <div class="stat"><div class="n">9–14</div><div class="t">Target age range</div></div>
     <div class="stat"><div class="n">Tossup</div><div class="t">True quizbowl format</div></div>
-    <div class="stat"><div class="n">PDF + EPUB</div><div class="t">Both formats included</div></div>
+    <div class="stat"><div class="n">EPUB</div><div class="t">Ebook format, reader of your choice</div></div>
   </div>
 </div>
 
@@ -442,46 +426,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span>© <span id="yr">2026</span> QuizBook</span>
-    <span class="ver">build 2026-08-10 02:10 UTC</span>
+    <span class="ver">build 2026-08-10 03:40 UTC</span>
   </div>
 </footer>
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-const QUESTIONS = [
-  {n:'Q 025', topic:'Rivers',
-   q:'Glen Canyon Dam impounds this river as Lake Powell, drowning a canyon whose loss haunted the conservationists who had traded it away, while Hoover Dam downstream backs it up as Lake Mead. A compact signed at Santa Fe in 1922 apportioned its flow between upper and lower basin states using estimates from unusually wet years, and so much is now withdrawn that its delta on the Gulf of California is normally dry. Over roughly six million years it exposed rock nearly two billion years old. For the points, name this river whose greatest gorge is a United States national park.',
-   a:'Colorado River'},
-  {n:'Q 174', topic:'Landmarks',
-   q:'A carved granite outcrop here called the Intihuatana may have served as a solar marker, and the terraces below the ridge are underlain by gravel layers that drain the slope and keep it from slumping. Built around 1450 under Pachacuti and abandoned within a century, it was never found by the Spanish. Local farmers led Hiram Bingham to it in 1911, and he publicised it worldwide. For the points, name this Inca site above the Urubamba.',
-   a:'Machu Picchu'},
-  {n:'Q 097', topic:'Lakes',
-   q:'The nerpa, the only seal living exclusively in fresh water, breeds on this lake\'s ice, alongside a translucent fish called the golomyanka. Opened by an active continental rift, it reaches 1,642 metres and holds roughly a fifth of the planet\'s unfrozen fresh water — more than all five Great Lakes together. The Angara is its single outflow, and the Trans-Siberian Railway skirts its southern end. For the points, name this Siberian lake.',
-   a:'Lake Baikal'},
-  {n:'Q 199', topic:'Peninsulas',
-   q:'Water-filled sinkholes called cenotes, used by the Maya for offerings and as their main water supply, pit this limestone shelf, which has almost no surface rivers. A ring of those sinkholes traces the buried rim of the Chicxulub crater, left by the impact tied to the end-Cretaceous extinction. Chichen Itza, Uxmal and Tulum stand on it. For the points, name this peninsula dividing the Gulf of Mexico from the Caribbean.',
-   a:'Yucatán Peninsula'}
+const SHOTS = [
+  {src:'sample-q095.png', w:1208, h:600,
+   alt:'Question #095: clue tags and a pyramid tossup whose answer is the Sargasso Sea.'},
+  {src:'sample-q002.png', w:1208, h:717,
+   alt:'Question #002: clue tags and a pyramid tossup whose answer is Brasília.'},
+  {src:'sample-q017.png', w:1208, h:649,
+   alt:'Question #017: clue tags and a pyramid tossup whose answer is Quito.'},
+  {src:'sample-q197.png', w:1208, h:600,
+   alt:'Question #197: clue tags and a pyramid tossup whose answer is the Bay of Fundy.'}
 ];
-
-const els = {
-  n: document.getElementById('q-num'),
-  t: document.getElementById('q-topic'),
-  q: document.getElementById('q-text'),
-  a: document.getElementById('q-ans')
-};
+const shot = document.getElementById('sampleshot');
 const deck = document.getElementById('deck');
-
 function show(i){
-  const item = QUESTIONS[i];
-  els.n.textContent = item.n;
-  els.t.textContent = item.topic;
-  els.q.textContent = item.q;
-  els.a.textContent = item.a;
+  const s = SHOTS[i];
+  shot.src = s.src; shot.width = s.w; shot.height = s.h; shot.alt = s.alt;
   [...deck.children].forEach((b, j) => b.setAttribute('aria-current', String(j === i)));
 }
-
-QUESTIONS.forEach((item, i) => {
+SHOTS.forEach((s, i) => {
   const b = document.createElement('button');
   b.type = 'button';
   b.setAttribute('aria-label', 'Show sample question ' + (i + 1));
@@ -490,10 +459,7 @@ QUESTIONS.forEach((item, i) => {
 });
 show(0);
 
-// Set this to the Cloud Function URL printed by backend/deploy.sh.
-const FORM_ENDPOINT = 'https://request-sample-mlujordz3a-uc.a.run.app';
-
-const form = document.getElementById('sample-form');
+document.getElementById('sample-form');
 const note = document.getElementById('formnote');
 const submit = form.querySelector('button[type=submit]');
 

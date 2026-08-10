@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#FBF9F4"/>
+  <circle cx="17" cy="32" r="5.5" fill="#C97F0A"/>
+  <text x="27" y="42" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,system-ui,sans-serif"
+        font-size="30" font-weight="800" fill="#0E6E6B" letter-spacing="-1">Q</text>
+</svg>

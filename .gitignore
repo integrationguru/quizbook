@@ -1,0 +1,29 @@
+# This repo is public. Anything matched here would be visible to the world
+# the moment it were committed, and stays in history even after deletion.
+.API
+.api
+*.API
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*credentials*.json
+*service-account*.json
+*-key.json
+client_secret*.json
+.secrets/
+secrets/
+
+# The sample EPUB and PDF are gated behind the signup form. Committing either
+# here would publish a direct download link and bypass the form entirely.
+*.epub
+*.pdf
+
+# Editors and OS
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

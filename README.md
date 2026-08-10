@@ -5,6 +5,8 @@ Bee competitors.
 
 Static HTML, no build step, served by GitHub Pages.
 
+The download backend lives in the private repo, not here.
+
 | Path | What it is |
 |---|---|
 | `index.html` | The whole site |

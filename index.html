@@ -159,7 +159,9 @@ section.band .intro{color:var(--ink-soft);max-width:56ch;margin:0 0 36px;font-si
 .subject .count{font-variant-numeric:tabular-nums;color:var(--ink-soft);font-size:14px;white-space:nowrap}
 .subject .state{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   padding:4px 10px;border-radius:20px;white-space:nowrap}
-.state.live{background:var(--teal-soft);color:var(--teal)}
+.state.live{background:var(--teal-soft);color:var(--teal);
+  text-decoration:none;display:inline-block}
+a.state.live:hover{background:var(--teal);color:var(--paper)}
 .state.soon{background:transparent;color:var(--ink-soft);border:1px solid var(--rule)}
 
 /* ---- look inside: screenshots of the real book ---- */
@@ -279,7 +281,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <div class="nm">Geography Bee</div>
           <div class="ds">Capitals, physical features, borders, climate zones, flags</div>
         </div>
-        <div class="state live">Sample ready</div>
+        <a class="state live" href="#sample">Sample ready</a>
       </div>
       <div class="subject">
         <div class="glyph">HI</div>
@@ -426,7 +428,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span>© <span id="yr">2026</span> QuizBook</span>
-    <span class="ver">build 2026-08-10 04:20 UTC</span>
+    <span class="ver">build 2026-08-10 05:05 UTC</span>
   </div>
 </footer>
 

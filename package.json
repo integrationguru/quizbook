@@ -1,0 +1,11 @@
+{
+  "name": "quizbook-site",
+  "private": true,
+  "description": "Smoke test for the static quizbook.org site — no build step, this only guards the sample form.",
+  "scripts": {
+    "test:form": "node tests/form-smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  }
+}

@@ -61,6 +61,44 @@ try {
   );
 
   await page.goto(`http://localhost:${PORT}/index.html`);
+
+  // Every catalogue row must drive a real checkbox. A row whose data-subject
+  // has no matching box would look clickable and silently send nothing.
+  const rowSubjects = await page.$$eval('button.state[data-subject]',
+    els => els.map(e => e.dataset.subject));
+  const boxValues = await page.$$eval('#picker input[name=subjects]',
+    els => els.map(e => e.value));
+  const orphans = rowSubjects.filter(s => !boxValues.includes(s));
+  const unlisted = boxValues.filter(v => !rowSubjects.includes(v));
+
+  const wiringProblems = [];
+  if (orphans.length) {
+    wiringProblems.push(`catalogue row(s) with no matching checkbox: ${orphans.join(', ')}`);
+  }
+  if (unlisted.length) {
+    wiringProblems.push(`checkbox(es) with no catalogue row: ${unlisted.join(', ')}`);
+  }
+  // Bail before interacting. Clicking a row that does not exist would other-
+  // wise fail as a 30s Playwright timeout and a stack trace, burying the
+  // actual cause.
+  if (wiringProblems.length) {
+    console.error('FORM SMOKE TEST FAILED\n' +
+      wiringProblems.map((p) => `  - ${p}`).join('\n'));
+    process.exitCode = 1;
+    await browser.close();
+    server.kill();
+    process.exit(1);
+  }
+
+  // Select two books through the catalogue rows, so the row-to-checkbox
+  // wiring is what gets exercised rather than the checkboxes alone. Chosen
+  // from the live list so renaming a book does not wedge the test.
+  const want = boxValues.filter(v => v !== 'geography').slice(0, 2);
+  await page.uncheck('#picker input[value=geography]');
+  for (const v of want) {
+    await page.click(`button.state[data-subject=${v}]`, { timeout: 5000 });
+  }
+
   await page.fill('#sample-form input[name=name]', 'Smoke Test');
   await page.fill('#sample-form input[type=email]', 'smoke-test@example.com');
   await page.click('#sample-form button[type=submit]');
@@ -82,6 +120,14 @@ try {
     if (!captured.body || !captured.body.email) {
       problems.push('POST body is missing the email field');
     }
+    const sent = captured.body && captured.body.subjects;
+    if (!Array.isArray(sent)) {
+      problems.push('POST body is missing the subjects array');
+    } else if (sent.join() !== want.join()) {
+      problems.push(
+        `subjects should be ${JSON.stringify(want)} (selected via catalogue rows), ` +
+        `got ${JSON.stringify(sent)}`);
+    }
   }
   if (!page.url().endsWith('/thanks.html')) {
     problems.push(`did not land on thanks.html (stuck at ${page.url()})`);
@@ -92,8 +138,9 @@ try {
     exitCode = 1;
   } else {
     console.log(
-      'Form smoke test passed: submit reaches FORM_ENDPOINT with a POST ' +
-        'carrying the email, no JS errors, lands on thanks.html.'
+      `Form smoke test passed: ${rowSubjects.length} catalogue rows all wired to ` +
+        'checkboxes, row clicks select the right books, POST carries ' +
+        `subjects=[${want.join(',')}] with the email, no JS errors, lands on thanks.html.`
     );
   }
 } finally {

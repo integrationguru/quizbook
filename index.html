@@ -184,8 +184,18 @@ section.band .intro{color:var(--ink-soft);max-width:56ch;margin:0 0 36px;font-si
   padding:4px 10px;border-radius:20px;white-space:nowrap}
 .state.live{background:var(--teal-soft);color:var(--teal);
   text-decoration:none;display:inline-block}
-a.state.live:hover{background:var(--teal);color:var(--paper)}
+a.state.live:hover,button.state.live:hover{background:var(--teal);color:var(--paper)}
+button.state{font-family:inherit;border:0;cursor:pointer}
+button.state.live[aria-pressed="true"]{background:var(--teal);color:var(--paper)}
 .state.soon{background:transparent;color:var(--ink-soft);border:1px solid var(--rule)}
+
+/* ---- book picker in the form ---- */
+.picker{border:0;padding:0;margin:0 0 18px}
+.picker legend{font-size:13px;font-weight:700;margin-bottom:9px;padding:0}
+.picker .opt{display:flex;align-items:flex-start;gap:9px;padding:7px 0;font-size:15px}
+.picker input{margin:3px 0 0;width:16px;height:16px;accent-color:var(--teal);flex:none}
+.picker .opt span{color:var(--ink-soft);font-size:13.5px;display:block}
+.picker .opt b{display:block;color:var(--ink);font-weight:600;font-size:15px}
 
 /* ---- look inside: screenshots of the real book ---- */
 .peeks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
@@ -312,31 +322,38 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <div class="ds">Capitals, physical features, borders, climate zones, flags</div>
           <div class="ds edition">Free sample: 150 questions &middot; full edition in preparation</div>
         </div>
-        <a class="state live" href="#sample">Sample ready</a>
+        <button type="button" class="state live" data-subject="geography"
+                aria-pressed="false">Get the sample</button>
       </div>
       <div class="subject">
         <img class="avatar" src="characters/history-boy-glasses.png" width="56" height="56" alt="">
         <div>
           <div class="nm">History Bee</div>
           <div class="ds">World events, dates, treaties, leaders, movements</div>
+          <div class="ds edition">Free sample: 150 questions &middot; full edition in preparation</div>
         </div>
-        <div class="state soon">In progress</div>
+        <button type="button" class="state live" data-subject="history"
+                aria-pressed="false">Get the sample</button>
       </div>
       <div class="subject">
         <img class="avatar" src="characters/science-boy.png" width="56" height="56" alt="">
         <div>
           <div class="nm">Science Bee</div>
           <div class="ds">Biology, chemistry, physics, earth and space science</div>
+          <div class="ds edition">Free sample: 150 questions &middot; full edition in preparation</div>
         </div>
-        <div class="state soon">In progress</div>
+        <button type="button" class="state live" data-subject="science"
+                aria-pressed="false">Get the sample</button>
       </div>
       <div class="subject">
         <img class="avatar" src="characters/quiz-bowl-girl-bun.png" width="56" height="56" alt="">
         <div>
           <div class="nm">Quiz Bowl</div>
           <div class="ds">Full pyramid tossups across the standard academic distribution</div>
+          <div class="ds edition">Free sample: 150 questions &middot; full edition in preparation</div>
         </div>
-        <div class="state soon">In progress</div>
+        <button type="button" class="state live" data-subject="academic"
+                aria-pressed="false">Get the sample</button>
       </div>
     </div>
   </div>
@@ -408,12 +425,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div>
       <p class="label">Free sample</p>
-      <h2>Get 150 geography questions, free</h2>
-      <p class="intro" style="margin-bottom:0">Leave your email and the full Geography Bee sample arrives in your inbox within a minute — no account, no card.</p>
+      <h2>Get 150 questions per subject, free</h2>
+      <p class="intro" style="margin-bottom:0">Pick the samples you want and they arrive in your inbox within a minute — no account, no card.</p>
       <ul class="checklist">
-        <li><span class="tick">✓</span><span>All 150 questions with answers, grouped by topic</span></li>
+        <li><span class="tick">✓</span><span>150 questions with answers in every book, grouped by topic</span></li>
+        <li><span class="tick">✓</span><span>Take as many subjects as you like — one email, one link each</span></li>
         <li><span class="tick">✓</span><span>Ebook that works on tablet, phone or paper</span></li>
-        <li><span class="tick">✓</span><span>A note when each new subject is published</span></li>
+        <li><span class="tick">✓</span><span>A note when each full edition is published</span></li>
       </ul>
     </div>
 
@@ -431,8 +449,27 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <label for="role">I'm a…</label>
         <input id="role" name="role" type="text" autocomplete="off" placeholder="Parent, teacher, student — optional">
       </div>
-      <button class="btn btn-primary" type="submit">Email me the sample</button>
-      <p class="fineprint">One email with your download link. We never sell your address.</p>
+      <fieldset class="picker" id="picker">
+        <legend>Which samples would you like?</legend>
+        <label class="opt">
+          <input type="checkbox" name="subjects" value="geography" checked>
+          <span><b>Geography Bee</b>Capitals, features, borders, climate, flags</span>
+        </label>
+        <label class="opt">
+          <input type="checkbox" name="subjects" value="history">
+          <span><b>History Bee</b>World events, dates, treaties, leaders</span>
+        </label>
+        <label class="opt">
+          <input type="checkbox" name="subjects" value="science">
+          <span><b>Science Bee</b>Biology, chemistry, physics, earth and space</span>
+        </label>
+        <label class="opt">
+          <input type="checkbox" name="subjects" value="academic">
+          <span><b>Quiz Bowl</b>Tossups across the academic distribution</span>
+        </label>
+      </fieldset>
+      <button class="btn btn-primary" type="submit">Email me the samples</button>
+      <p class="fineprint">One email with your download links. We never sell your address.</p>
       <p class="formnote" id="formnote"></p>
     </form>
   </div>
@@ -503,6 +540,34 @@ function say(message, ok) {
   note.style.color = ok ? '' : 'var(--honey)';
 }
 
+const boxes = [...document.querySelectorAll('#picker input[name=subjects]')];
+
+function syncChips() {
+  document.querySelectorAll('button.state[data-subject]').forEach(btn => {
+    const box = boxes.find(b => b.value === btn.dataset.subject);
+    const on = !!box && box.checked;
+    btn.setAttribute('aria-pressed', String(on));
+    btn.textContent = on ? 'Selected \u2713' : 'Get the sample';
+  });
+}
+
+// A catalogue row ticks its own box and sends you to the form. Clicking an
+// already-selected row unticks it, so the chip is a real toggle rather than a
+// link that silently does nothing the second time.
+document.querySelectorAll('button.state[data-subject]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const box = boxes.find(b => b.value === btn.dataset.subject);
+    if (!box) return;
+    box.checked = !box.checked;
+    syncChips();
+    if (box.checked) {
+      document.getElementById('sample').scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+  });
+});
+boxes.forEach(b => b.addEventListener('change', syncChips));
+syncChips();
+
 form.addEventListener('submit', async function (e) {
   e.preventDefault();
   if (FORM_ENDPOINT.startsWith('REPLACE_')) {
@@ -510,7 +575,15 @@ form.addEventListener('submit', async function (e) {
     return;
   }
 
+  const chosen = boxes.filter(b => b.checked).map(b => b.value);
+  if (!chosen.length) {
+    say('Pick at least one book to receive.', false);
+    return;
+  }
+  // FormData.entries() collapses repeated fields, so subjects is set explicitly.
   const data = Object.fromEntries(new FormData(form).entries());
+  data.subjects = chosen;
+
   submit.disabled = true;
   const original = submit.textContent;
   submit.textContent = 'Sending…';

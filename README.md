@@ -17,19 +17,21 @@ builders and the Cloud Functions behind the signup form.
 | `tests/form-smoke.mjs` | Submits the real form in a real browser (see below) |
 | `CNAME` | The custom domain |
 
-### Two images that stay at the repo root
+### `reader-email.png` is at the root as well as in `images/`
 
-`og-image.png` and `reader-email.png` are **not** in `images/`, and moving
-them would break things that this repo cannot fix afterwards:
+It is the illustration in the sample email, and `backend/main.py` in the
+private repo puts its absolute URL into every send. New emails point at
+`images/reader-email.png`; the copy at the root is there for the emails
+already sitting in people's inboxes, going back to launch, which point at the
+old path and always will. Deleting it breaks the picture in all of them.
 
-- `og-image.png` is the social preview. Its URL is baked into every link
-  already shared on Slack, WhatsApp, X and LinkedIn, and those platforms
-  serve their cached copy until something makes them re-scrape.
-- `reader-email.png` is the illustration in the sample email. Every email
-  already delivered points at this exact URL. Moving it puts a broken image
-  into inboxes going back to launch.
-
-Anything the pages themselves load can move freely; those two cannot.
+That is the general rule here: a file the pages load can move freely, but a
+URL that has already gone out to the world has to keep answering. `og-image.png`
+was the other one — it moved, because a social preview is cached per shared
+link and platforms re-read the page's meta tags when they re-scrape, so the
+worst case is a stale card that heals rather than a permanent 404. If a
+recently shared link still shows the old card, LinkedIn's Post Inspector and
+Facebook's Sharing Debugger both force a re-scrape.
 
 ## Before you push a change to `index.html`
 

@@ -6,8 +6,8 @@
 <title>QuizBook — Question books for Bee competitors</title>
 <meta name="description" content="Question books for Geography, History, Science and Quiz Bowl competitors. Pyramid-style tossups written for students aged 9–16.">
 <link rel="canonical" href="https://quizbook.org/">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/icon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://quizbook.org/">
 <meta property="og:site_name" content="QuizBook">
@@ -267,10 +267,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <header class="masthead">
   <div class="wrap">
-    <a class="brand" href="/"><img class="logo" src="logo.svg" width="30" height="30" alt="">Quiz<b>Book</b></a>
+    <a class="brand" href="/"><img class="logo" src="images/logo.svg" width="30" height="30" alt="">Quiz<b>Book</b></a>
     <nav>
       <a href="#subjects">Subjects</a>
       <a href="#inside">Look inside</a>
+      <a href="#guides">Study guides</a>
       <a href="#why">Why ebook</a>
       <a href="#sample">Free sample</a>
       <a href="#contact">Contact</a>
@@ -293,7 +294,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div>
       <p class="label" style="margin-bottom:12px">A question from the sample</p>
       <div class="card">
-        <img id="sampleshot" src="sample-q002.png" width="1308" height="1228"
+        <img id="sampleshot" src="images/sample-q002.png" width="1308" height="1228"
              alt="Question #002 from the sample: clue tags and a pyramid tossup whose answer is Brasília.">
         <div class="deck" id="deck"></div>
       </div>
@@ -316,37 +317,37 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <h2>One book per subject</h2>
     <div class="subjects">
       <div class="subject">
-        <img class="avatar" src="characters/geography-girl.png" width="56" height="56" alt="">
+        <img class="avatar" src="images/characters/geography-girl.png" width="56" height="56" alt="">
         <div>
           <div class="nm">Geography Bee</div>
           <div class="ds">Capitals, physical features, borders, climate zones, flags</div>
-          <div class="ds edition">Free sample: 150 questions &middot; full edition in preparation</div>
+          <div class="ds edition">Free sample: 150 questions + study guide &middot; full edition in preparation</div>
         </div>
         <button type="button" class="state live" data-subject="geography"
                 aria-pressed="false">Get the sample</button>
       </div>
       <div class="subject">
-        <img class="avatar" src="characters/history-boy-glasses.png" width="56" height="56" alt="">
+        <img class="avatar" src="images/characters/history-boy-glasses.png" width="56" height="56" alt="">
         <div>
           <div class="nm">History Bee</div>
           <div class="ds">World events, dates, treaties, leaders, movements</div>
-          <div class="ds edition">Free sample: 150 questions &middot; full edition in preparation</div>
+          <div class="ds edition">Free sample: 150 questions + study guide &middot; full edition in preparation</div>
         </div>
         <button type="button" class="state live" data-subject="history"
                 aria-pressed="false">Get the sample</button>
       </div>
       <div class="subject">
-        <img class="avatar" src="characters/science-boy.png" width="56" height="56" alt="">
+        <img class="avatar" src="images/characters/science-boy.png" width="56" height="56" alt="">
         <div>
           <div class="nm">Science Bee</div>
           <div class="ds">Biology, chemistry, physics, earth and space science</div>
-          <div class="ds edition">Free sample: 150 questions &middot; full edition in preparation</div>
+          <div class="ds edition">Free sample: 150 questions + study guide &middot; full edition in preparation</div>
         </div>
         <button type="button" class="state live" data-subject="science"
                 aria-pressed="false">Get the sample</button>
       </div>
       <div class="subject">
-        <img class="avatar" src="characters/quiz-bowl-girl-bun.png" width="56" height="56" alt="">
+        <img class="avatar" src="images/characters/quiz-bowl-girl-bun.png" width="56" height="56" alt="">
         <div>
           <div class="nm">Quiz Bowl</div>
           <div class="ds">Full pyramid tossups across the standard academic distribution</div>
@@ -367,17 +368,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
     <div class="peeks">
       <div class="peek">
-        <img src="inside-question.png" width="1380" height="1313" loading="lazy"
+        <img src="images/inside-question.png" width="1380" height="1313" loading="lazy"
              alt="A question card showing clue tags, a pyramid tossup and the revealed answer.">
         <p class="cap"><b>The question card</b>Clues run obscure to obvious, each tagged by feature type and marked in the text.</p>
       </div>
       <div class="peek">
-        <img src="inside-clues.png" width="1380" height="1279" loading="lazy"
+        <img src="images/inside-clues.png" width="1380" height="1279" loading="lazy"
              alt="The clue reference, listing every clue grouped by feature type with the questions using it.">
         <p class="cap"><b>Clue reference</b>Every clue grouped by type, linked to each question that uses it.</p>
       </div>
       <div class="peek">
-        <img src="inside-index.png" width="1380" height="1267" loading="lazy"
+        <img src="images/inside-index.png" width="1380" height="1267" loading="lazy"
              alt="The answers index, listing every answer alphabetically with question numbers.">
         <p class="cap"><b>Answers index</b>Every answer alphabetically, so you can revise backwards.</p>
       </div>
@@ -387,14 +388,42 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
+<section class="band" id="guides">
+  <div class="wrap">
+    <p class="label">Study guides</p>
+    <h2>The facts the questions are built from</h2>
+    <p class="intro">Geography, History and Science each come with a study guide drawn from the same material as the questions — the places, people and events the clues point at, written to read straight through rather than to be quizzed on. The highlighted phrase in each entry is the giveaway: the line that, on its own, should be enough to buzz.</p>
+
+    <div class="peeks">
+      <div class="peek">
+        <img src="images/geography-studyguide.png" width="1026" height="766" loading="lazy"
+             alt="A page of the Geography study guide: entries for New London and the Connecticut River, each with its key fact highlighted.">
+        <p class="cap"><b>Geography</b>Grouped by feature — cities, rivers, ranges — each entry carrying the detail a clue is most likely to hang on.</p>
+      </div>
+      <div class="peek">
+        <img src="images/history-studyguide.png" width="1026" height="766" loading="lazy"
+             alt="A page of the History study guide: the Medieval chapter, with Skanderbeg under Albania and the League of Lezhë highlighted.">
+        <p class="cap"><b>History</b>Ordered by era and then by country, with the rulers, events and places that come up under each.</p>
+      </div>
+      <div class="peek">
+        <img src="images/science-studyguide.png" width="1026" height="766" loading="lazy"
+             alt="A page of the Science study guide: entries for HIV, Tay-Sachs, cholera and rabies, with the identifying details highlighted.">
+        <p class="cap"><b>Science</b>Grouped by topic, so a run of questions on one subject can be revised in one sitting.</p>
+      </div>
+    </div>
+
+    <p class="fineprint" style="text-align:left;margin-top:20px">Included free with the sample, in the same email. Pages shown from the Geography, History and Science guides.</p>
+  </div>
+</section>
+
 <section class="band" id="why">
   <div class="wrap">
     <p class="label">Why an ebook</p>
     <h2>Made to be studied, not just read</h2>
     <div class="why-layout">
     <picture>
-      <source srcset="reader.webp" type="image/webp">
-      <img class="reader" src="reader.png" width="900" height="600" loading="lazy"
+      <source srcset="images/reader.webp" type="image/webp">
+      <img class="reader" src="images/reader.png" width="900" height="600" loading="lazy"
            alt="A girl sitting cross-legged, absorbed in a large open book.">
     </picture>
     <div class="why-grid">
@@ -429,7 +458,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <p class="intro" style="margin-bottom:0">Pick the samples you want and they arrive in your inbox within a minute — no account, no card.</p>
       <ul class="checklist">
         <li><span class="tick">✓</span><span>150 questions with answers in every book, grouped by topic</span></li>
-        <li><span class="tick">✓</span><span>Take as many subjects as you like — one email, one link each</span></li>
+        <li><span class="tick">✓</span><span>Take as many subjects as you like — it all arrives in one email</span></li>
+        <li><span class="tick">✓</span><span>The matching study guide with Geography, History and Science</span></li>
         <li><span class="tick">✓</span><span>Ebook that works on tablet, phone or paper</span></li>
         <li><span class="tick">✓</span><span>A note when each full edition is published</span></li>
       </ul>
@@ -503,13 +533,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 const SHOTS = [
-  {src:'sample-q002.png', w:1308, h:1228,
+  {src:'images/sample-q002.png', w:1308, h:1228,
    alt:'Question #002: clue tags and a pyramid tossup whose answer is Brasília.'},
-  {src:'sample-q178.png', w:1308, h:1228,
+  {src:'images/sample-q178.png', w:1308, h:1228,
    alt:'Question #178: clue tags and a pyramid tossup whose answer is Christ the Redeemer.'},
-  {src:'sample-q146.png', w:1308, h:1228,
+  {src:'images/sample-q146.png', w:1308, h:1228,
    alt:'Question #146: clue tags and a pyramid tossup whose answer is the Māori.'},
-  {src:'sample-q105.png', w:1308, h:1228,
+  {src:'images/sample-q105.png', w:1308, h:1228,
    alt:'Question #105: clue tags and a pyramid tossup whose answer is tropical rainforest.'}
 ];
 const shot = document.getElementById('sampleshot');

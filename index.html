@@ -168,10 +168,17 @@ section.band .intro{color:var(--ink-soft);max-width:56ch;margin:0 0 36px;font-si
   display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;
   padding:20px 4px;border-bottom:1px solid var(--rule);
 }
+.subject .actions{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
+.subject .buylink{
+  font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;
+  white-space:nowrap;border-bottom:1px solid transparent;
+}
+.subject .buylink:hover{border-bottom-color:var(--teal)}
+.subject .buylink .amt{font-variant-numeric:tabular-nums}
 @media(max-width:720px){
   .subject{grid-template-columns:auto 1fr;gap:6px 16px}
   .subject .avatar{width:84px;height:63px}
-  .subject .state{grid-column:2}
+  .subject .actions{grid-column:2;flex-direction:row;align-items:center;gap:14px}
 }
 .subject .avatar{
   width:120px;height:90px;border-radius:8px;object-fit:cover;
@@ -360,10 +367,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div>
           <div class="nm">Geography Bee</div>
           <div class="ds">Capitals, physical features, borders, climate zones, flags</div>
-          <div class="ds edition">Free sample: 150 questions + study guide &middot; full edition in preparation</div>
+          <div class="ds edition">Free sample: 150 questions + study guide &middot; complete edition on sale below</div>
         </div>
-        <button type="button" class="state live" data-subject="geography"
+        <div class="actions">
+          <button type="button" class="state live" data-subject="geography"
                 aria-pressed="false">Get the sample</button>
+          <a class="buylink" href="#buy">Buy the full book <span class="amt">$49.99</span></a>
+        </div>
       </div>
       <div class="subject">
         <picture>
@@ -374,10 +384,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div>
           <div class="nm">History Bee</div>
           <div class="ds">World events, dates, treaties, leaders, movements</div>
-          <div class="ds edition">Free sample: 150 questions + study guide &middot; full edition in preparation</div>
+          <div class="ds edition">Free sample: 150 questions + study guide &middot; complete edition on sale below</div>
         </div>
-        <button type="button" class="state live" data-subject="history"
+        <div class="actions">
+          <button type="button" class="state live" data-subject="history"
                 aria-pressed="false">Get the sample</button>
+          <a class="buylink" href="#buy">Buy the full book <span class="amt">$49.99</span></a>
+        </div>
       </div>
       <div class="subject">
         <picture>
@@ -388,10 +401,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div>
           <div class="nm">Science Bee</div>
           <div class="ds">Biology, chemistry, physics, earth and space science</div>
-          <div class="ds edition">Free sample: 150 questions + study guide &middot; full edition in preparation</div>
+          <div class="ds edition">Free sample: 150 questions + study guide &middot; complete edition on sale below</div>
         </div>
-        <button type="button" class="state live" data-subject="science"
+        <div class="actions">
+          <button type="button" class="state live" data-subject="science"
                 aria-pressed="false">Get the sample</button>
+          <a class="buylink" href="#buy">Buy the full book <span class="amt">$29.99</span></a>
+        </div>
       </div>
       <div class="subject">
         <picture>
@@ -402,10 +418,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div>
           <div class="nm">Quiz Bowl</div>
           <div class="ds">Full pyramid tossups across the standard academic distribution</div>
-          <div class="ds edition">Free sample: 150 questions &middot; full edition in preparation</div>
+          <div class="ds edition">Free sample: 150 questions &middot; complete edition on sale below</div>
         </div>
-        <button type="button" class="state live" data-subject="academic"
+        <div class="actions">
+          <button type="button" class="state live" data-subject="academic"
                 aria-pressed="false">Get the sample</button>
+          <a class="buylink" href="#buy">Buy the full book <span class="amt">$19.99</span></a>
+        </div>
       </div>
     </div>
   </div>

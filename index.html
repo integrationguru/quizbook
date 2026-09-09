@@ -211,6 +211,28 @@ button.state.live[aria-pressed="true"]{background:var(--teal);color:var(--paper)
 .peek .cap{font-size:13.5px;color:var(--ink-soft)}
 .peek .cap b{color:var(--ink);font-weight:700;display:block;font-size:14.5px;margin-bottom:1px}
 
+/* ---- buy ---- */
+.buys{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+@media(max-width:980px){.buys{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.buys{grid-template-columns:1fr}}
+.buy{
+  display:flex;flex-direction:column;gap:10px;
+  background:var(--raised);border:1px solid var(--rule);border-radius:12px;
+  padding:20px 20px 22px;
+}
+.buy.feature{border-color:var(--teal);box-shadow:0 10px 30px -22px rgb(var(--shadow)/.5)}
+.buy h3{margin:0;font-size:17px;line-height:1.3}
+.buy .price{font-size:26px;font-weight:700;color:var(--teal);line-height:1}
+.buy .save{font-size:12.5px;color:var(--honey);font-weight:600}
+.buy ul{margin:2px 0 0;padding-left:18px;color:var(--ink-soft);font-size:13.5px;line-height:1.55}
+.buy li{margin-bottom:3px}
+.buy .btn{margin-top:auto;text-align:center;width:100%;box-sizing:border-box}
+.buy .tag{
+  align-self:flex-start;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  font-weight:700;color:var(--teal);background:var(--teal-soft);
+  border-radius:99px;padding:3px 9px;
+}
+
 /* ---- why an ebook ---- */
 .why-layout{display:grid;grid-template-columns:360px 1fr;gap:56px;
   align-items:center;margin-top:18px}
@@ -273,6 +295,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <a href="#subjects">Subjects</a>
       <a href="#inside">Look inside</a>
       <a href="#guides">Study guides</a>
+      <a href="#buy">Buy</a>
       <a href="#why">Why ebook</a>
       <a href="#sample">Free sample</a>
       <a href="#contact">Contact</a>
@@ -439,6 +462,91 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
 
     <p class="fineprint" style="text-align:left;margin-top:20px">Included free with the sample, in the same email. Pages shown from the Geography, History and Science guides.</p>
+  </div>
+</section>
+
+<section class="band" id="buy">
+  <div class="wrap">
+    <p class="label">Complete editions</p>
+    <h2>Buy the full books</h2>
+    <p class="intro">Every question, not the 150-question sample — and the study guide behind each Bee. Delivered as EPUB by email, watermarked with your name, yours to keep. Payment and VAT are handled by Lemon Squeezy.</p>
+
+    <div class="buys">
+      <div class="buy">
+        
+        <h3>Geography Bee Bundle</h3>
+        <div class="price">$49.99</div>
+        
+        <ul>
+          <li>6,882 pyramid tossups</li>
+          <li>19,755-entry clue reference</li>
+          <li>Study guide: 5,776 facts, 1,860 entries</li>
+        </ul>
+        <a class="btn btn-primary lemonsqueezy-button" href="https://quizbook.lemonsqueezy.com/checkout/buy/006872eb-afe5-4f85-811d-1fa7299598e3?embed=1">Buy Geography Bee Bundle</a>
+      </div>
+      <div class="buy">
+        
+        <h3>History Bee Bundle</h3>
+        <div class="price">$49.99</div>
+        
+        <ul>
+          <li>31,957 pyramid tossups</li>
+          <li>66,779-entry clue reference</li>
+          <li>Study guide: 21,106 facts, 6,563 entries</li>
+        </ul>
+        <a class="btn btn-primary lemonsqueezy-button" href="https://quizbook.lemonsqueezy.com/checkout/buy/6e814879-5bc8-4171-b034-b98cfa91ca6d?embed=1">Buy History Bee Bundle</a>
+      </div>
+      <div class="buy">
+        
+        <h3>Science Bee Bundle</h3>
+        <div class="price">$29.99</div>
+        
+        <ul>
+          <li>12,630 pyramid tossups</li>
+          <li>13,398-entry clue reference</li>
+          <li>Study guide: 4,573 facts, 2,260 entries</li>
+        </ul>
+        <a class="btn btn-primary lemonsqueezy-button" href="https://quizbook.lemonsqueezy.com/checkout/buy/d53d0337-86ff-4e51-ba25-8368499335ea?embed=1">Buy Science Bee Bundle</a>
+      </div>
+      <div class="buy">
+        
+        <h3>Quiz Bowl Question Bank</h3>
+        <div class="price">$19.99</div>
+        
+        <ul>
+          <li>31,122 pyramid tossups</li>
+          <li>Twelve categories, fine arts to sport</li>
+          <li>14,699 answers indexed</li>
+        </ul>
+        <a class="btn btn-primary lemonsqueezy-button" href="https://quizbook.lemonsqueezy.com/checkout/buy/5c61ad0e-47db-46f6-80ff-6ee957e56fe3?embed=1">Buy Quiz Bowl Question Bank</a>
+      </div>
+      <div class="buy feature">
+        <span class="tag">Two Bees</span>
+        <h3>Geography &amp; History</h3>
+        <div class="price">$79.99</div>
+        <div class="save">Saves $19.99</div>
+        <ul>
+          <li>38,839 pyramid tossups</li>
+          <li>Both question books</li>
+          <li>Both study guides</li>
+        </ul>
+        <a class="btn btn-primary lemonsqueezy-button" href="https://quizbook.lemonsqueezy.com/checkout/buy/fa91290c-e7a1-4ed7-bbc9-19266c0447c7?embed=1">Buy Geography and History</a>
+      </div>
+      <div class="buy feature">
+        <span class="tag">Everything</span>
+        <h3>QuizBook Complete</h3>
+        <div class="price">$99.99</div>
+        <div class="save">Saves $49.98</div>
+        <ul>
+          <li>82,591 pyramid tossups</li>
+          <li>All four question books</li>
+          <li>All three study guides</li>
+        </ul>
+        <a class="btn btn-primary lemonsqueezy-button" href="https://quizbook.lemonsqueezy.com/checkout/buy/7f7c7ead-d432-4e30-88d7-ffc209db443f?embed=1">Buy QuizBook Complete</a>
+      </div>
+    </div>
+
+    <p class="fineprint" style="text-align:left;margin-top:22px">Each book is built with your name in it after you pay, so the download links arrive by email within a minute or two rather than instantly. Links stay valid for 7 days; the files are yours permanently.</p>
   </div>
 </section>
 
@@ -673,5 +781,10 @@ form.addEventListener('submit', async function (e) {
   }
 });
 </script>
+<!-- Lemon Squeezy's overlay checkout. Every buy button's href is a real
+     checkout URL, so if this script is blocked or fails to load the button
+     still works as an ordinary link — which is the only reason a third-party
+     script is on this page at all. -->
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 </body>
 </html>

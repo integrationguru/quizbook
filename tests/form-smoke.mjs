@@ -38,10 +38,25 @@ try {
   });
   const page = await browser.newPage();
 
+  // What this test exists to catch is the page's own script breaking — an
+  // edit that clips a line and leaves the submit handler unattached, which is
+  // exactly what happened once and reached nobody. A pageerror is that.
+  //
+  // A console error is not always that. The page loads Lemon Squeezy's
+  // lemon.js for the buy buttons, and a browser reports a subresource it
+  // could not fetch as a console error, so a CDN blip, an offline runner or a
+  // content blocker would fail this test while the form works perfectly. Those
+  // are collected separately and reported rather than failing the run. The buy
+  // buttons degrade to plain links without that script, deliberately, so
+  // failing to load it is not a failure of this page.
   const errors = [];
+  const ignored = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('console', (msg) => {
-    if (msg.type() === 'error') errors.push(msg.text());
+    if (msg.type() !== 'error') return;
+    const text = msg.text();
+    if (/Failed to load resource|ERR_[A-Z_]+|net::/.test(text)) ignored.push(text);
+    else errors.push(text);
   });
 
   let captured = null;
@@ -137,6 +152,12 @@ try {
     console.error('FORM SMOKE TEST FAILED\n' + problems.map((p) => `  - ${p}`).join('\n'));
     exitCode = 1;
   } else {
+    // Reported rather than swallowed: a buy button whose script never loads
+    // still works, but it should not go unnoticed either.
+    if (ignored.length) {
+      const seen = [...new Set(ignored.map((t) => t.slice(0, 90)))];
+      console.log(`  (${ignored.length} resource failure(s) ignored: ${seen.join(' | ')})`);
+    }
     console.log(
       `Form smoke test passed: ${rowSubjects.length} catalogue rows all wired to ` +
         'checkboxes, row clicks select the right books, POST carries ' +

@@ -170,10 +170,11 @@ section.band .intro{color:var(--ink-soft);max-width:56ch;margin:0 0 36px;font-si
 }
 @media(max-width:720px){
   .subject{grid-template-columns:auto 1fr;gap:6px 16px}
+  .subject .avatar{width:84px;height:63px}
   .subject .state{grid-column:2}
 }
 .subject .avatar{
-  width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 15%;
+  width:120px;height:90px;border-radius:8px;object-fit:cover;
   background:var(--honey-soft);flex:none;
 }
 .subject .nm{font-weight:700;font-size:17px}
@@ -317,7 +318,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <h2>One book per subject</h2>
     <div class="subjects">
       <div class="subject">
-        <img class="avatar" src="images/characters/geography-girl.png" width="56" height="56" alt="">
+        <picture>
+          <source srcset="images/subjects/geography.webp" type="image/webp">
+          <img class="avatar" src="images/subjects/geography.png"
+               width="240" height="180" alt="A girl reading an atlas, with a globe, a compass and books beside her.">
+        </picture>
         <div>
           <div class="nm">Geography Bee</div>
           <div class="ds">Capitals, physical features, borders, climate zones, flags</div>
@@ -327,7 +332,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
                 aria-pressed="false">Get the sample</button>
       </div>
       <div class="subject">
-        <img class="avatar" src="images/characters/history-boy-glasses.png" width="56" height="56" alt="">
+        <picture>
+          <source srcset="images/subjects/history.webp" type="image/webp">
+          <img class="avatar" src="images/subjects/history.png"
+               width="240" height="180" alt="A boy reading a history book, with historical objects beside him.">
+        </picture>
         <div>
           <div class="nm">History Bee</div>
           <div class="ds">World events, dates, treaties, leaders, movements</div>
@@ -337,7 +346,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
                 aria-pressed="false">Get the sample</button>
       </div>
       <div class="subject">
-        <img class="avatar" src="images/characters/science-boy.png" width="56" height="56" alt="">
+        <picture>
+          <source srcset="images/subjects/science.webp" type="image/webp">
+          <img class="avatar" src="images/subjects/science.png"
+               width="240" height="180" alt="A boy reading a science book, with laboratory objects beside him.">
+        </picture>
         <div>
           <div class="nm">Science Bee</div>
           <div class="ds">Biology, chemistry, physics, earth and space science</div>
@@ -347,7 +360,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
                 aria-pressed="false">Get the sample</button>
       </div>
       <div class="subject">
-        <img class="avatar" src="images/characters/quiz-bowl-girl-bun.png" width="56" height="56" alt="">
+        <picture>
+          <source srcset="images/subjects/academic.webp" type="image/webp">
+          <img class="avatar" src="images/subjects/academic.png"
+               width="240" height="180" alt="A girl reading, with a violin, an easel and a paint palette beside her.">
+        </picture>
         <div>
           <div class="nm">Quiz Bowl</div>
           <div class="ds">Full pyramid tossups across the standard academic distribution</div>

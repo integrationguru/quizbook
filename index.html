@@ -293,10 +293,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
 
     <div>
-      <p class="label" style="margin-bottom:12px">A question from the sample</p>
+      <p class="label" style="margin-bottom:12px">A question from each book</p>
       <div class="card">
-        <img id="sampleshot" src="images/sample-q002.png" width="1308" height="1228"
-             alt="Question #002 from the sample: clue tags and a pyramid tossup whose answer is Brasília.">
+        <img id="sampleshot" src="images/hero/geography.png" width="1380" height="1290"
+             alt="A page of the Geography Bee: a pyramid tossup with its clue tags and the answer revealed.">
         <div class="deck" id="deck"></div>
       </div>
     </div>
@@ -381,27 +381,36 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <p class="label">Look inside</p>
     <h2>How every book is laid out</h2>
-    <p class="intro">Three things shape the format: a question you can drill without seeing the answer, an index that lets you revise backwards from the answers, and a way to browse by feature type when you want to hammer one topic.</p>
+    <p class="intro">Three things shape the format: a question you can drill without seeing the answer, an index that lets you revise backwards from the answers, and a way to browse by feature type when you want to hammer one topic. Every book is built the same way — one shown here from each of the three Bees.</p>
 
     <div class="peeks">
       <div class="peek">
-        <img src="images/inside-question.png" width="1380" height="1313" loading="lazy"
-             alt="A question card showing clue tags, a pyramid tossup and the revealed answer.">
-        <p class="cap"><b>The question card</b>Clues run obscure to obvious, each tagged by feature type and marked in the text.</p>
+<picture>
+          <source srcset="images/inside-question.webp" type="image/webp">
+          <img src="images/inside-question.png" width="1380" height="1290" loading="lazy"
+               alt="A question card from the Geography Bee: clue tags, a pyramid tossup and the revealed answer.">
+        </picture>
+        <p class="cap"><b>The question card</b>Clues run obscure to obvious, each tagged by feature type and marked in the text. <i>Geography Bee.</i></p>
       </div>
       <div class="peek">
-        <img src="images/inside-clues.png" width="1380" height="1279" loading="lazy"
-             alt="The clue reference, listing every clue grouped by feature type with the questions using it.">
-        <p class="cap"><b>Clue reference</b>Every clue grouped by type, linked to each question that uses it.</p>
+<picture>
+          <source srcset="images/inside-clues.webp" type="image/webp">
+          <img src="images/inside-clues.png" width="1380" height="1290" loading="lazy"
+               alt="The clue reference from the History Bee, listing every clue grouped by feature type with the questions using it.">
+        </picture>
+        <p class="cap"><b>Clue reference</b>Every clue grouped by type, linked to each question that uses it. <i>History Bee.</i></p>
       </div>
       <div class="peek">
-        <img src="images/inside-index.png" width="1380" height="1267" loading="lazy"
-             alt="The answers index, listing every answer alphabetically with question numbers.">
-        <p class="cap"><b>Answers index</b>Every answer alphabetically, so you can revise backwards.</p>
+<picture>
+          <source srcset="images/inside-index.webp" type="image/webp">
+          <img src="images/inside-index.png" width="1380" height="1290" loading="lazy"
+               alt="The answers index from the Science Bee, listing every answer alphabetically with question numbers.">
+        </picture>
+        <p class="cap"><b>Answers index</b>Every answer alphabetically, so you can revise backwards. <i>Science Bee.</i></p>
       </div>
     </div>
 
-    <p class="fineprint" style="text-align:left;margin-top:20px">Screenshots from the Geography Bee sample.</p>
+    <p class="fineprint" style="text-align:left;margin-top:20px">Pages from the Geography, History and Science Bee complete editions.</p>
   </div>
 </section>
 
@@ -549,15 +558,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
+// One card per subject, so the hero shows the whole catalogue rather than
+// Geography four times. Rendered by tools/site_shots.py out of the built
+// books, at the width this card is actually shown at.
 const SHOTS = [
-  {src:'images/sample-q002.png', w:1308, h:1228,
-   alt:'Question #002: clue tags and a pyramid tossup whose answer is Brasília.'},
-  {src:'images/sample-q178.png', w:1308, h:1228,
-   alt:'Question #178: clue tags and a pyramid tossup whose answer is Christ the Redeemer.'},
-  {src:'images/sample-q146.png', w:1308, h:1228,
-   alt:'Question #146: clue tags and a pyramid tossup whose answer is the Māori.'},
-  {src:'images/sample-q105.png', w:1308, h:1228,
-   alt:'Question #105: clue tags and a pyramid tossup whose answer is tropical rainforest.'}
+  {src:'images/hero/geography.png', w:1380, h:1290, label:'Geography',
+   alt:'A page of the Geography Bee: a pyramid tossup with its clue tags and the answer revealed.'},
+  {src:'images/hero/history.png', w:1380, h:1290, label:'History',
+   alt:'A page of the History Bee: a tossup on the labours of Hercules with the answer revealed.'},
+  {src:'images/hero/science.png', w:1380, h:1290, label:'Science',
+   alt:'A page of the Science Bee: a pyramid tossup with the answer revealed.'},
+  {src:'images/hero/quizbowl.png', w:1380, h:1290, label:'Quiz Bowl',
+   alt:'A page of the Quiz Bowl question bank: a pyramid tossup with the answer revealed.'}
 ];
 const shot = document.getElementById('sampleshot');
 const deck = document.getElementById('deck');
@@ -569,7 +581,7 @@ function show(i){
 SHOTS.forEach((s, i) => {
   const b = document.createElement('button');
   b.type = 'button';
-  b.setAttribute('aria-label', 'Show sample question ' + (i + 1));
+  b.setAttribute('aria-label', 'Show the ' + s.label + ' question');
   b.addEventListener('click', () => show(i));
   deck.appendChild(b);
 });

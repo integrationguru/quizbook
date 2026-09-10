@@ -148,9 +148,15 @@ a{color:var(--teal)}
 .deck button[aria-current="true"]{background:var(--honey)}
 
 /* ---- strip of facts ---- */
-.strip{border-bottom:1px solid var(--rule);background:var(--raised)}
-.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;padding:0}
-@media(max-width:720px){.strip .wrap{grid-template-columns:1fr}
+.strip{background:transparent;padding:30px 24px}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:0;
+  background:var(--raised);border:1px solid var(--rule);border-radius:12px;
+  overflow:hidden;box-shadow:0 10px 30px -26px rgb(var(--shadow)/.5)}
+@media(max-width:900px){.strip .wrap{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--rule)}}
+@media(max-width:560px){.strip{padding:22px 16px}
+  .strip .wrap{grid-template-columns:1fr}
   .stat{border-left:0;border-top:1px solid var(--rule)}
   .stat:first-child{border-top:0}}
 .stat{padding:26px 24px;border-left:1px solid var(--rule)}
@@ -353,7 +359,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <div class="strip">
   <div class="wrap">
-    <div class="stat"><div class="n">82,591</div><div class="t">Questions across four books</div></div>
+    <div class="stat"><div class="n">7</div><div class="t">Books: 4 tossup, 3 guides</div></div>
+    <div class="stat"><div class="n">82,591</div><div class="t">Pyramid tossups</div></div>
     <div class="stat"><div class="n">99,932</div><div class="t">Clues, each tagged and indexed</div></div>
     <div class="stat"><div class="n">31,455</div><div class="t">Facts in the three study guides</div></div>
   </div>

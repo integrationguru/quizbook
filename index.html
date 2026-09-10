@@ -149,12 +149,18 @@ a{color:var(--teal)}
 
 /* ---- strip of facts ---- */
 .strip{border-bottom:1px solid var(--rule);background:var(--raised)}
-.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;padding:0}
-@media(max-width:720px){.strip .wrap{grid-template-columns:repeat(2,1fr)}}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;padding:0}
+@media(max-width:720px){.strip .wrap{grid-template-columns:1fr}
+  .stat{border-left:0;border-top:1px solid var(--rule)}
+  .stat:first-child{border-top:0}}
 .stat{padding:26px 24px;border-left:1px solid var(--rule)}
 .stat:first-child{border-left:0}
 @media(max-width:720px){.stat:nth-child(3){border-left:0}}
-.stat .n{font-size:27px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat .n{font-size:27px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+  color:var(--teal)}
+@media(max-width:1080px){.stat .n{font-size:23px}}
+@media(max-width:720px){.stat{padding:20px 16px}.stat .n{font-size:21px}
+  .stat .t{font-size:12.5px}}
 .stat .t{font-size:13.5px;color:var(--ink-soft);margin-top:2px}
 
 /* ---- generic section ---- */
@@ -329,6 +335,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <p class="lede">Pyramid tossups whose clues run hard to easy, so a strong player can buzz early and everyone else still gets a way in. Written for students aged 9–16 preparing for school and national Bee rounds.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#sample">Get the free sample</a>
+        <a class="btn btn-ghost" href="#buy">Buy the books</a>
         <a class="btn btn-ghost" href="#subjects">See the subjects</a>
       </div>
     </div>
@@ -346,10 +353,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <div class="strip">
   <div class="wrap">
-    <div class="stat"><div class="n">4</div><div class="t">Subjects</div></div>
-    <div class="stat"><div class="n">9–16</div><div class="t">Target age range</div></div>
-    <div class="stat"><div class="n">Tossup</div><div class="t">True quizbowl format</div></div>
-    <div class="stat"><div class="n">EPUB</div><div class="t">Ebook format, reader of your choice</div></div>
+    <div class="stat"><div class="n">82,591</div><div class="t">Questions across four books</div></div>
+    <div class="stat"><div class="n">99,932</div><div class="t">Clues, each tagged and indexed</div></div>
+    <div class="stat"><div class="n">31,455</div><div class="t">Facts in the three study guides</div></div>
   </div>
 </div>
 

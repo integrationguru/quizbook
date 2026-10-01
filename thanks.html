@@ -146,5 +146,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </footer>
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<!-- Cloudflare Web Analytics: cookieless, no consent banner, no effect on
+     anything the page does. It loads only once TOKEN is a real site token
+     from Cloudflare > Analytics > Web Analytics > Add a site, so until that
+     is pasted in the page is honestly uninstrumented rather than quietly
+     beaconing nothing. Not needed at all if quizbook.org is proxied through
+     Cloudflare (orange cloud) -- there the beacon is injected server-side
+     and this stays inert. -->
+<script>
+(function () {
+  var TOKEN = 'PASTE_CLOUDFLARE_WEB_ANALYTICS_TOKEN';
+  if (!/^[0-9a-f]{32}$/.test(TOKEN)) return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  s.setAttribute('data-cf-beacon', JSON.stringify({ token: TOKEN }));
+  document.head.appendChild(s);
+})();
+</script>
 </body>
 </html>
